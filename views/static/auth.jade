@@ -1,0 +1,15 @@
+extends wrap
+
+block body
+  section.toplevel
+    .wrap
+      #view
+
+block topnav
+  nav
+    a(href='/auth/login') Login
+    a(href='/auth/signup') Signup
+
+block js
+  script(src='/js/lib/requirejs/require.js',
+  data-main='/js/auth.js')

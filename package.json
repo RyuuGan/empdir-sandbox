@@ -1,0 +1,20 @@
+{
+  "name": "empdir",
+  "version": "0.0.0",
+  "description": "",
+  "private": "true",
+  "dependencies": {
+    "circumflex": "*",
+    "express": "4.x.x",
+    "jade": "*",
+    "stylus": "*",
+    "mongoose": "*",
+    "underscore": "*",
+    "redis": "*",
+    "async": "*"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-jade": "*"
+  }
+}
