@@ -1,15 +1,44 @@
 define(function(require) {
 
-  var Backbone = require('backbone');
+  var BaseView = require('util/BaseView')
+    , $ = require('jquery');
 
-  return Backbone.View.extend({
+  return BaseView.extend({
 
-    el: this.$('#view'),
+    template: require('jade!templates/auth/login'),
 
-    template: require('jade!./login'),
+    events: {
+      'show': 'show',
+      'click #btnLogin': 'doLogin',
+      'keypress input': 'loginOnEnter'
+    },
 
-    render: function(data) {
-      this.$el.html(this.template(data));
+    show: function(ev) {
+      this.$('#username').focus();
+      $('a[href="/auth/login"]').addClass('active');
+    },
+
+    doLogin: function(ev) {
+      $.ajax({
+        type: 'post',
+        url: '/api/auth/login',
+        data: {
+          username: $('#username').val(),
+          password: $('#password').val()
+        },
+        dataType: 'json',
+        success: function() {
+          alert('Success!');
+        },
+        error: function() {
+          alert('Fail!');
+        }
+      });
+    },
+
+    loginOnEnter: function(ev) {
+      if (ev.keyCode == '13')
+        this.doLogin(ev);
     }
 
   });

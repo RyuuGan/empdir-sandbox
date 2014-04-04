@@ -1,6 +1,10 @@
+@import './variables'
+@import './fonts'
+@import './ui/inputs'
+
 html, body
   margin: 0
-  font: 16px/1.5 PT Sans, Open Sans, sans-serif
+  font: font-size/line-height font-main
 
 .toplevel
   > .wrap
@@ -8,16 +12,20 @@ html, body
     margin: 0 auto
 
 header.toplevel
-  background: #000
+  background: color-text
   color: #fff
   line-height: 48px
   a
-    color: #ffe
+    color: #fff
     text-decoration: none
+    &.active
+      color: color-highlight
   nav
     float:right
     a + a
       margin-left: 16px
+    i
+      margin-right: 4px
 
 footer.toplevel
   font-size: 12px

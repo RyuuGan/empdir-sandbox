@@ -1,18 +1,18 @@
 define(function(require) {
 
-  var Backbone = require('backbone')
+  var BaseView = require('util/BaseView')
     , $ = require('jquery');
 
-  var View = Backbone.View.extend({
+  return BaseView.extend({
 
-    el: $('#view'),
+    template: require('jade!templates/auth/signup'),
 
-    render: function() {
-      this.$el.append('SIGNUP');
+    events: {
+      'show': 'show'
     },
 
-    initialize: function() {
-      this.render();
+    show: function(ev) {
+      $('a[href="/auth/signup"]').addClass('active');
     }
 
   });

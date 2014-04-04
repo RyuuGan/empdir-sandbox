@@ -3,19 +3,22 @@
 var $ = require('../app').main
   , jade = require('jade');
 
-$.get('/templates/*.jade', function(req, res, next) {
-
-});
+// Page module
 
 $.get('/', function(req, res, next) {
-  res.render('static/index');
+  req.url = '/page/index';
+  next();
 });
 
-$.get('/auth*', function(req, res, next) {
+$.get('/page/*', function(req, res, next) {
+  res.render('static/page/' + req.params[0]);
+});
+
+// Auth module
+
+$.get('/auth/*', function(req, res, next) {
   res.render('static/auth');
 });
 
-$.get('/mgmt*', function(req, res, next) {
-  res.render('static/mgmt');
-});
+
 

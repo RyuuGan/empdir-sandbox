@@ -10,9 +10,22 @@ html
     header.toplevel
       .wrap
         a(href='/') EmpDir
-        block topnav
-    block body
+        nav#topnav
+    #main
+      block main
     footer.toplevel
       .wrap
         p 2014 &copy; EmpDir
-    block js
+    script.
+      var require = {
+        baseUrl: '/js',
+        paths: {
+          "jquery": 'lib/jquery',
+          "backbone": "lib/backbone",
+          "underscore": "lib/underscore",
+          "jade": "lib/jade"
+        }
+      };
+
+  block js
+      
