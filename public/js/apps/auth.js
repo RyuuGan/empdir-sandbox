@@ -1,13 +1,16 @@
+"use strict";
+
 define(function(require) {
 
   var Backbone = require('backbone')
+    , BaseRouter  = require('util/BaseRouter')
     , app = require('app');
 
   var TopNav = require('widgets/TopNav');
 
   new TopNav().render('#topnav');
 
-  var Router = Backbone.Router.extend({
+  var Router = BaseRouter.extend({
 
     routes: {
       'auth/login': function() {
@@ -24,14 +27,6 @@ define(function(require) {
           replace: true
         });
       }
-    },
-
-    loadView: function(selector, view) {
-      if (this.currentView && this.currentView.remove) {
-        this.currentView.remove();
-      }
-      this.currentView = view;
-      view.render(selector);
     }
 
   });
