@@ -12,11 +12,11 @@ define(function(require) {
     routes: {
       'auth/login': function() {
         var View = require('views/auth/login');
-        new View().render('#main');
+        this.loadView('#main', new View());
       },
       'auth/signup': function() {
         var View = require('views/auth/signup');
-        new View().render('#main');
+        this.loadView('#main', new View());
       },
       '*path': function() {
         Backbone.history.navigate('auth/login', {
@@ -24,6 +24,14 @@ define(function(require) {
           replace: true
         });
       }
+    },
+
+    loadView: function(selector, view) {
+      if (this.currentView && this.currentView.remove) {
+        this.currentView.remove();
+      }
+      this.currentView = view;
+      view.render(selector);
     }
 
   });

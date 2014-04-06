@@ -14,6 +14,17 @@ define(function(require) {
       $('nav *').removeClass('active');
       container.html(this.$el);
       this.$el.trigger('show');
+    },
+
+    subViews: [],
+
+    addView: function(view) {
+      this.subViews.push(view);
+    },
+
+    remove: function() {
+      _.each(this.subViews, function(view) { view.remove(); });
+      Backbone.View.prototype.remove.call(this);
     }
 
   });
